@@ -39,11 +39,19 @@
                     <h3>Latas Colecionáveis</h3>
                     <p>Designs exclusivos inspirados em Hollow Knight e Silksong</p>
                 </div>
-                <div class="feature-card">
-                    <img src="images/feature2.png" alt="Sabor Especial">
-                    <h3>Várias Marcas</h3>
-                    <p>Pepsi, Monster, Fanta, Twister e muito mais em edições especiais</p>
-                </div>
+                   <div class="feature-card gallery-card">
+                       <h3>Várias Marcas</h3>
+                       <p>Pepsi, Monster, Fanta, Twister e muito mais em edições especiais</p>
+                       <div class="gallery" id="brandGallery">
+                           <!-- Thumbnails (images are in the Varias-Imagens folder) -->
+                           <img class="gallery-thumb" src="Varias-Imagens/sherma-fanta-maracuja-removebg-preview.png" alt="Fanta Maracujá">
+                           <img class="gallery-thumb" src="Varias-Imagens/Coca-Cola_Hornet-removebg-preview.png" alt="Coca Cola Hornet">
+                           <img class="gallery-thumb" src="Varias-Imagens/Grimm-Monster-Energy-removebg-preview.png" alt="Grimm Monster">
+                           <img class="gallery-thumb" src="Varias-Imagens/Moss_Druid_Twist-removebg-preview.png" alt="Moss Druid Twist">
+                           <img class="gallery-thumb" src="Varias-Imagens/Radiance-Monster-removebg-preview.png" alt="Radiance Monster">
+                           <img class="gallery-thumb" src="Varias-Imagens/Sprite-COCUMELLO-removebg-preview.png" alt="Sprite Cocumello">
+                       </div>
+                   </div>
             </div>
         </section>
 
@@ -51,17 +59,17 @@
             <h2>Personagens em Destaque</h2>
             <div class="character-grid">
                 <div class="character-card">
-                    <img src="images/hollow-knight.png" alt="Hollow Knight">
+                    <img src="Personagens-lata/Pale-King-Moster-Energy-removebg-preview.png" alt="The Knight - Monster Energy">
                     <h3>The Knight</h3>
                     <p>O protagonista silencioso</p>
                 </div>
                 <div class="character-card">
-                    <img src="images/hornet.png" alt="Hornet">
+                    <img src="Personagens-lata/Hornet-Silksong-Guarana-removebg-preview.png" alt="Hornet - Guaraná Antarctica">
                     <h3>Hornet</h3>
                     <p>A protetora de Hallownest</p>
                 </div>
                 <div class="character-card">
-                    <img src="images/quirrel.png" alt="Quirrel">
+                    <img src="Personagens-lata/Quirell-Pepsi-Black.png" alt="Quirrel - Pepsi Black">
                     <h3>Quirrel</h3>
                     <p>O viajante sábio</p>
                 </div>
@@ -94,5 +102,15 @@
     </footer>
 
     <script src="script.js"></script>
+    <!-- Lightbox modal -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <button class="lightbox-close" aria-label="Fechar">×</button>
+        <button class="lightbox-prev" aria-label="Anterior">‹</button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightbox-image">
+            <p id="lightbox-caption" class="lightbox-caption"></p>
+        </div>
+        <button class="lightbox-next" aria-label="Próximo">›</button>
+    </div>
 </body>
 </html>
