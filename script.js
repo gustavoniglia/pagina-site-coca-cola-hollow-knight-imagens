@@ -125,77 +125,79 @@ window.addEventListener('scroll', () => {
 // ============================================
 // LIGHTBOX / GALLERY
 // ============================================
-/**
- * Lightbox for the gallery in 'Várias Marcas'.
- * - Open modal when thumbnail clicked
- * - Navigate next/prev
- * - Close with close button, overlay click or ESC
- */
-const gallery = document.getElementById('brandGallery');
-const lightbox = document.getElementById('lightbox');
-const lightboxImage = document.getElementById('lightbox-image');
-const lightboxCaption = document.getElementById('lightbox-caption');
-const closeBtn = document.querySelector('.lightbox-close');
-const prevBtn = document.querySelector('.lightbox-prev');
-const nextBtn = document.querySelector('.lightbox-next');
+document.addEventListener('DOMContentLoaded', () => {
+    /**
+     * Lightbox for the gallery in 'Várias Marcas'.
+     * - Open modal when thumbnail clicked
+     * - Navigate next/prev
+     * - Close with close button, overlay click or ESC
+     */
+    const gallery = document.getElementById('brandGallery');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const closeBtn = document.querySelector('.lightbox-close');
+    const prevBtn = document.querySelector('.lightbox-prev');
+    const nextBtn = document.querySelector('.lightbox-next');
 
-let galleryItems = [];
-let currentIndex = 0;
+    let galleryItems = [];
+    let currentIndex = 0;
 
-if (gallery && lightbox) {
-    galleryItems = Array.from(gallery.querySelectorAll('.gallery-thumb'));
+    if (gallery && lightbox) {
+        galleryItems = Array.from(gallery.querySelectorAll('.gallery-thumb'));
 
-    // Open lightbox when clicking a thumbnail
-    galleryItems.forEach((thumb, index) => {
-        thumb.addEventListener('click', () => {
-            openLightbox(index);
+        // Open lightbox when clicking a thumbnail
+        galleryItems.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => {
+                openLightbox(index);
+            });
         });
-    });
 
-    // Close
-    closeBtn.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeLightbox();
-    });
+        // Close
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
 
-    // Prev/Next
-    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
-    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+        // Prev/Next
+        prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+        nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
 
-    // Keyboard support
-    document.addEventListener('keydown', (e) => {
-        if (lightbox.getAttribute('aria-hidden') === 'false') {
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowLeft') showPrev();
-            if (e.key === 'ArrowRight') showNext();
-        }
-    });
-}
+        // Keyboard support
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.getAttribute('aria-hidden') === 'false') {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') showPrev();
+                if (e.key === 'ArrowRight') showNext();
+            }
+        });
+    }
 
-function openLightbox(index) {
-    currentIndex = index;
-    const img = galleryItems[currentIndex];
-    lightboxImage.src = img.src;
-    lightboxImage.alt = img.alt || '';
-    lightboxCaption.textContent = img.alt || '';
-    lightbox.setAttribute('aria-hidden', 'false');
-}
+    function openLightbox(index) {
+        currentIndex = index;
+        const img = galleryItems[currentIndex];
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt || '';
+        lightboxCaption.textContent = img.alt || '';
+        lightbox.setAttribute('aria-hidden', 'false');
+    }
 
-function closeLightbox() {
-    lightbox.setAttribute('aria-hidden', 'true');
-    lightboxImage.src = '';
-    lightboxCaption.textContent = '';
-}
+    function closeLightbox() {
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImage.src = '';
+        lightboxCaption.textContent = '';
+    }
 
-function showPrev() {
-    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-    openLightbox(currentIndex);
-}
+    function showPrev() {
+        currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+        openLightbox(currentIndex);
+    }
 
-function showNext() {
-    currentIndex = (currentIndex + 1) % galleryItems.length;
-    openLightbox(currentIndex);
-}
+    function showNext() {
+        currentIndex = (currentIndex + 1) % galleryItems.length;
+        openLightbox(currentIndex);
+    }
+});
 
 // ============================================
 // MENU MOBILE
